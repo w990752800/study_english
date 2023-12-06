@@ -15,6 +15,8 @@ jobs:
 
       - name: Set up mdbook
         uses: jontze/action-mdbook@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
 
       - name: Build the book
         run: mdbook build
