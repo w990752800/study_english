@@ -1,0 +1,30 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 或者 master，根据您的主分支名称调整
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up mdbook
+        uses: jontze/action-mdbook@v3
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Build the book
+        run: mdbook build
+
+      - name: Deploy to GitHub Pages
+        uses: qoomon/deploy-to-github-pages-action@v1
+        with:
+          GITHUB_PAGES_SOURCE_DIR: book # default value:  dist
+          GITHUB_PAGES_BRANCH: gh-pages # default value:  gh-pages
+          GITHUB_PAGES_REPLACE: false # default value:  false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
