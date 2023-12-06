@@ -11,13 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Set up Rust
-        uses: moonrepo/setup-rust@v1
-
-      - name: Install mdbook
-        run: cargo install mdbook
+      - name: Set up mdbook
+        uses: jontze/action-mdbook@v3
 
       - name: Build the book
         run: mdbook build
