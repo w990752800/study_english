@@ -9,4 +9,5 @@ mdbook serve --open
 ```
 <!-- 创建deploy.yml文件 -->
 ```
+参考： https://github.com/marketplace/actions/setup-rust-and-cargo
 

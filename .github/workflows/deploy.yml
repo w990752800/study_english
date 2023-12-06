@@ -23,7 +23,9 @@ jobs:
         run: mdbook build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: qoomon/deploy-to-github-pages-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
+          GITHUB_PAGES_SOURCE_DIR: book # default value:  dist
+          GITHUB_PAGES_BRANCH: gh-pages # default value:  gh-pages
+          GITHUB_PAGES_REPLACE: false # default value:  false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
